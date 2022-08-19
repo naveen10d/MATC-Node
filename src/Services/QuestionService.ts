@@ -12,9 +12,9 @@ export class QuestionService {
         return await this.questionDao.save(questions);
     }
 
-    async questionGet(): Promise<QuestionModel[]> {
+    async questionGet(query:String): Promise<QuestionModel[]> {
         logger.info(MESSAGE.SERVICE_GETALL_INFO);
-        return await this.questionDao.getAll();
+        return await this.questionDao.getAll(query);
     }
 
     async questionRead(id: String): Promise<QuestionModel | null> {

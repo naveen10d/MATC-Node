@@ -11,9 +11,9 @@ export class QuestionDao {
         const question: any = new questionModel(questions);
         return await question.save();
     }
-    async getAll(): Promise<QuestionModel[]> {
+    async getAll(query: String): Promise<QuestionModel[]> {
         logger.info(MESSAGE.DAO_GETALL_INFO);
-        return await questionModel.find();
+        return await questionModel.find({ questionType: query });
     }
     async getById(id: String): Promise<QuestionModel | null> {
         logger.info(MESSAGE.DAO_GET_INFO);

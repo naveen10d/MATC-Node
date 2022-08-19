@@ -32,7 +32,8 @@ export class QuestionController {
     async questionGet(req: Request, res: Response): Promise<void> {
         try {
             logger.info(MESSAGE.CONTROLLER_GETALL_INFO);
-            const question: QuestionModel[] = await this.questionService.questionGet();
+            let query: any = req.query.questionType;
+            const question: QuestionModel[] = await this.questionService.questionGet(query);
             res.status(200).send(question);
         }
         catch (err) {
